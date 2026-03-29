@@ -1,0 +1,57 @@
+name: Build linter images
+
+on:
+  push:
+    paths:
+      - linters/**
+  workflow_dispatch:
+
+jobs:
+  build-shellcheck:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build shellcheck image
+        run: docker build -t linter-shellcheck:latest linters/shellcheck/
+
+  build-hadolint:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build hadolint image
+        run: docker build -t linter-hadolint:latest linters/hadolint/
+
+  build-yamllint:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build yamllint image
+        run: docker build -t linter-yamllint:latest linters/yamllint/
+
+  build-jq:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build jq image
+        run: docker build -t linter-jq:latest linters/jq/
+
+  build-markdownlint:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build markdownlint image
+        run: docker build -t linter-markdownlint:latest linters/markdownlint/
+
+  build-gitleaks:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build gitleaks image
+        run: docker build -t linter-gitleaks:latest linters/gitleaks/
+
+  build-dotenv:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build dotenv image
+        run: docker build -t linter-dotenv:latest linters/dotenv/
