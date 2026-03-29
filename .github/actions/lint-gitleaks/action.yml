@@ -2,12 +2,11 @@ name: Lint - gitleaks
 description: Scan for leaked secrets with gitleaks
 
 runs:
-  using: composite
-  steps:
-    - name: Run gitleaks
-      shell: bash
-      run: |
-        docker run --rm \
-          -v "$(pwd):/path" \
-          ghcr.io/yamnish/linter-gitleaks:latest \
-          detect --source /path --redact --verbose
+  using: docker
+  image: docker://ghcr.io/yamnish/linter-gitleaks:latest
+  args:
+    - detect
+    - --source
+    - /github/workspace
+    - --redact
+    - --verbose

@@ -2,13 +2,9 @@ name: Lint - shellcheck
 description: Run shellcheck on all .sh files
 
 runs:
-  using: composite
-  steps:
-    - name: Run shellcheck
-      shell: bash
-      run: |
-        docker run --rm \
-          -v "$(pwd):/workdir" \
-          -w /workdir \
-          ghcr.io/yamnish/linter-shellcheck:latest \
-          sh -c 'find . -name "*.sh" -not -path "./.git/*" | xargs -r shellcheck'
+  using: docker
+  image: docker://ghcr.io/yamnish/linter-shellcheck:latest
+  entrypoint: /bin/sh
+  args:
+    - -c
+    - find /github/workspace -name "*.sh" -not -path "*/.git/*" | xargs -r shellcheck

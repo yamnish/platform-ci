@@ -2,20 +2,17 @@ name: Lint - dotenv-linter
 description: Run dotenv-linter on .env.example files
 
 runs:
-  using: composite
-  steps:
-    - name: Run dotenv-linter
-      shell: bash
-      run: |
-        files=$(find . \( -name '*.env.example' -o -name '.env.example' \) -not -path './.git/*')
-        if [ -z "$files" ]; then
-          echo "No .env.example files found, skipping."
-          exit 0
-        fi
-        while IFS= read -r f; do
-          docker run --rm \
-            -v "$(pwd):/workdir" \
-            -w /workdir \
-            ghcr.io/yamnish/linter-dotenv:latest \
-            check "$f"
-        done <<< "$files"
+  using: docker
+  image: docker://ghcr.io/yamnish/linter-dotenv:latest
+  entrypoint: /bin/sh
+  args:
+    - -c
+    - |
+      files=$(find /github/workspace \( -name '*.env.example' -o -name '.env.example' \) -not -path '*/.git/*')
+      if [ -z "$files" ]; then
+        echo "No .env.example files found, skipping."
+        exit 0
+      fi
+      echo "$files" | while IFS= read -r f; do
+        dotenv-linter check "$f"
+      done
