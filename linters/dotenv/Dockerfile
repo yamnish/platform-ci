@@ -5,4 +5,6 @@ RUN apk add --no-cache wget && \
     tar -xzf /tmp/dotenv-linter.tar.gz -C /usr/local/bin && \
     rm /tmp/dotenv-linter.tar.gz && \
     apk del wget
-ENTRYPOINT ["dotenv-linter"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

@@ -4,7 +4,3 @@ description: Run shellcheck on all .sh files
 runs:
   using: docker
   image: docker://ghcr.io/yamnish/linter-shellcheck:latest
-  entrypoint: /bin/sh
-  args:
-    - -c
-    - find /github/workspace -name "*.sh" -not -path "*/.git/*" | xargs -r shellcheck

@@ -4,8 +4,3 @@ description: Run yamllint on all .yml and .yaml files
 runs:
   using: docker
   image: docker://ghcr.io/yamnish/linter-yamllint:latest
-  args:
-    - yamllint
-    - -d
-    - "{extends: default, rules: {truthy: {allowed-values: ['true', 'false', 'on', 'off'], check-keys: false}, line-length: {max: 200}, comments: {min-spaces-from-content: 1}}}"
-    - /github/workspace

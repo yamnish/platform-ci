@@ -5,4 +5,6 @@ RUN apk add --no-cache wget && \
     tar -xzf /tmp/gitleaks.tar.gz -C /usr/local/bin gitleaks && \
     rm /tmp/gitleaks.tar.gz && \
     apk del wget
-ENTRYPOINT ["gitleaks"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

@@ -4,7 +4,3 @@ description: Run hadolint on all Dockerfiles
 runs:
   using: docker
   image: docker://ghcr.io/yamnish/linter-hadolint:latest
-  entrypoint: /bin/sh
-  args:
-    - -c
-    - "find /github/workspace \\( -name 'Dockerfile' -o -name 'Dockerfile.*' \\) -not -path '*/.git/*' | xargs -r hadolint"
