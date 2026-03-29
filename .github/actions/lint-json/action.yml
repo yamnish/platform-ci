@@ -10,7 +10,7 @@ runs:
         docker run --rm \
           -v "$(pwd):/workdir" \
           -w /workdir \
-          linter-jq:latest \
+          ghcr.io/yamnish/linter-jq:latest \
           sh -c '
             failed=0
             find . -name "*.json" -not -path "./.git/*" | while read -r f; do

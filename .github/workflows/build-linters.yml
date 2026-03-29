@@ -11,47 +11,96 @@ jobs:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
-      - name: Build shellcheck image
-        run: docker build -t linter-shellcheck:latest linters/shellcheck/
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push shellcheck image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/linter-shellcheck:latest linters/shellcheck/
+          docker push ghcr.io/${{ github.repository_owner }}/linter-shellcheck:latest
 
   build-hadolint:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
-      - name: Build hadolint image
-        run: docker build -t linter-hadolint:latest linters/hadolint/
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push hadolint image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/linter-hadolint:latest linters/hadolint/
+          docker push ghcr.io/${{ github.repository_owner }}/linter-hadolint:latest
 
   build-yamllint:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
-      - name: Build yamllint image
-        run: docker build -t linter-yamllint:latest linters/yamllint/
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push yamllint image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/linter-yamllint:latest linters/yamllint/
+          docker push ghcr.io/${{ github.repository_owner }}/linter-yamllint:latest
 
   build-jq:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
-      - name: Build jq image
-        run: docker build -t linter-jq:latest linters/jq/
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push jq image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/linter-jq:latest linters/jq/
+          docker push ghcr.io/${{ github.repository_owner }}/linter-jq:latest
 
   build-markdownlint:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
-      - name: Build markdownlint image
-        run: docker build -t linter-markdownlint:latest linters/markdownlint/
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push markdownlint image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/linter-markdownlint:latest linters/markdownlint/
+          docker push ghcr.io/${{ github.repository_owner }}/linter-markdownlint:latest
 
   build-gitleaks:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
-      - name: Build gitleaks image
-        run: docker build -t linter-gitleaks:latest linters/gitleaks/
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push gitleaks image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/linter-gitleaks:latest linters/gitleaks/
+          docker push ghcr.io/${{ github.repository_owner }}/linter-gitleaks:latest
 
   build-dotenv:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
-      - name: Build dotenv image
-        run: docker build -t linter-dotenv:latest linters/dotenv/
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push dotenv image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/linter-dotenv:latest linters/dotenv/
+          docker push ghcr.io/${{ github.repository_owner }}/linter-dotenv:latest

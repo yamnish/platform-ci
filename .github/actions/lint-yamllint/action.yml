@@ -9,7 +9,7 @@ runs:
       run: |
         docker run --rm \
           -v "$(pwd):/code" \
-          linter-yamllint:latest \
+          ghcr.io/yamnish/linter-yamllint:latest \
           yamllint -d '{
             extends: default,
             rules: {

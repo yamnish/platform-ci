@@ -10,5 +10,5 @@ runs:
         docker run --rm \
           -v "$(pwd):/workdir" \
           -w /workdir \
-          linter-shellcheck:latest \
+          ghcr.io/yamnish/linter-shellcheck:latest \
           sh -c 'find . -name "*.sh" -not -path "./.git/*" | xargs -r shellcheck'

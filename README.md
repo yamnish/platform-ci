@@ -181,12 +181,12 @@ jobs:
 
 Каждый образ:
 
-| Образ | Базовый образ |
-|-------|---------------|
-| `linter-shellcheck` | `koalaman/shellcheck-alpine:stable` |
-| `linter-hadolint` | `hadolint/hadolint:v2.12.0-alpine` |
-| `linter-yamllint` | `python:3-alpine` |
-| `linter-jq` | `alpine:3.19` |
-| `linter-markdownlint` | `node:lts-alpine` |
-| `linter-gitleaks` | `alpine:3.19` |
-| `linter-dotenv` | `alpine:3.19` |
+| Образ | Registry | Базовый образ |
+|-------|----------|---------------|
+| `linter-shellcheck` | `ghcr.io/yamnish/linter-shellcheck:latest` | `koalaman/shellcheck-alpine:stable` |
+| `linter-hadolint` | `ghcr.io/yamnish/linter-hadolint:latest` | `hadolint/hadolint:v2.12.0-alpine` |
+| `linter-yamllint` | `ghcr.io/yamnish/linter-yamllint:latest` | `python:3-alpine` |
+| `linter-jq` | `ghcr.io/yamnish/linter-jq:latest` | `alpine:3.19` |
+| `linter-markdownlint` | `ghcr.io/yamnish/linter-markdownlint:latest` | `node:lts-alpine` |
+| `linter-gitleaks` | `ghcr.io/yamnish/linter-gitleaks:latest` | `alpine:3.19` |
+| `linter-dotenv` | `ghcr.io/yamnish/linter-dotenv:latest` | `alpine:3.19` |

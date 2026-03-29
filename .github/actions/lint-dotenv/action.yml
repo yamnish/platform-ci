@@ -16,6 +16,6 @@ runs:
           docker run --rm \
             -v "$(pwd):/workdir" \
             -w /workdir \
-            linter-dotenv:latest \
+            ghcr.io/yamnish/linter-dotenv:latest \
             check "$f"
         done <<< "$files"

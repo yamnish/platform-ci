@@ -10,6 +10,6 @@ runs:
         docker run --rm \
           -v "$(pwd):/workdir" \
           -w /workdir \
-          linter-markdownlint:latest \
+          ghcr.io/yamnish/linter-markdownlint:latest \
           --disable MD013 MD033 MD034 MD041 -- \
           $(find . -name '*.md' -not -path './.git/*')
