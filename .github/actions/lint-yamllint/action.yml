@@ -1,6 +1,0 @@
-name: Lint - yamllint
-description: Run yamllint on all .yml and .yaml files
-
-runs:
-  using: docker
-  image: docker://ghcr.io/yamnish/linter-yamllint:latest

@@ -1,6 +1,0 @@
-name: Lint - dotenv-linter
-description: Run dotenv-linter on .env.example files
-
-runs:
-  using: docker
-  image: docker://ghcr.io/yamnish/linter-dotenv:latest

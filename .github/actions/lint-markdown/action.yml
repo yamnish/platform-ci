@@ -1,6 +1,0 @@
-name: Lint - markdownlint
-description: Run markdownlint on all .md files
-
-runs:
-  using: docker
-  image: docker://ghcr.io/yamnish/linter-markdownlint:latest

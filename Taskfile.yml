@@ -1,0 +1,48 @@
+version: '3'
+
+tasks:
+  lint-shellcheck:
+    desc: Run shellcheck on all .sh files
+    cmds:
+      - docker run --rm -v "{{.USER_WORKING_DIR}}:/github/workspace" ghcr.io/yamnish/linter-shellcheck:latest
+
+  lint-hadolint:
+    desc: Run hadolint on all Dockerfiles
+    cmds:
+      - docker run --rm -v "{{.USER_WORKING_DIR}}:/github/workspace" ghcr.io/yamnish/linter-hadolint:latest
+
+  lint-yamllint:
+    desc: Run yamllint on all .yml/.yaml files
+    cmds:
+      - docker run --rm -v "{{.USER_WORKING_DIR}}:/github/workspace" ghcr.io/yamnish/linter-yamllint:latest
+
+  lint-json:
+    desc: Validate all .json files
+    cmds:
+      - docker run --rm -v "{{.USER_WORKING_DIR}}:/github/workspace" ghcr.io/yamnish/linter-jq:latest
+
+  lint-markdown:
+    desc: Run markdownlint on all .md files
+    cmds:
+      - docker run --rm -v "{{.USER_WORKING_DIR}}:/github/workspace" ghcr.io/yamnish/linter-markdownlint:latest
+
+  lint-gitleaks:
+    desc: Scan git history for leaked secrets
+    cmds:
+      - docker run --rm -v "{{.USER_WORKING_DIR}}:/github/workspace" ghcr.io/yamnish/linter-gitleaks:latest
+
+  lint-dotenv:
+    desc: Run dotenv-linter on .env.example files
+    cmds:
+      - docker run --rm -v "{{.USER_WORKING_DIR}}:/github/workspace" ghcr.io/yamnish/linter-dotenv:latest
+
+  lint:
+    desc: Run all linters
+    deps:
+      - lint-shellcheck
+      - lint-hadolint
+      - lint-yamllint
+      - lint-json
+      - lint-markdown
+      - lint-gitleaks
+      - lint-dotenv

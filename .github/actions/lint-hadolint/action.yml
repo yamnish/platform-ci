@@ -1,6 +1,0 @@
-name: Lint - hadolint
-description: Run hadolint on all Dockerfiles
-
-runs:
-  using: docker
-  image: docker://ghcr.io/yamnish/linter-hadolint:latest

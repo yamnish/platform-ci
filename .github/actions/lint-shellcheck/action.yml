@@ -1,6 +1,0 @@
-name: Lint - shellcheck
-description: Run shellcheck on all .sh files
-
-runs:
-  using: docker
-  image: docker://ghcr.io/yamnish/linter-shellcheck:latest

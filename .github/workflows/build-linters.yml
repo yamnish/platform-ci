@@ -16,9 +16,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push shellcheck image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/linter-shellcheck:latest linters/shellcheck/
+      - run: |
+          docker build --target shellcheck -t ghcr.io/${{ github.repository_owner }}/linter-shellcheck:latest linters/
           docker push ghcr.io/${{ github.repository_owner }}/linter-shellcheck:latest
 
   build-hadolint:
@@ -30,9 +29,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push hadolint image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/linter-hadolint:latest linters/hadolint/
+      - run: |
+          docker build --target hadolint -t ghcr.io/${{ github.repository_owner }}/linter-hadolint:latest linters/
           docker push ghcr.io/${{ github.repository_owner }}/linter-hadolint:latest
 
   build-yamllint:
@@ -44,9 +42,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push yamllint image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/linter-yamllint:latest linters/yamllint/
+      - run: |
+          docker build --target yamllint -t ghcr.io/${{ github.repository_owner }}/linter-yamllint:latest linters/
           docker push ghcr.io/${{ github.repository_owner }}/linter-yamllint:latest
 
   build-jq:
@@ -58,9 +55,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push jq image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/linter-jq:latest linters/jq/
+      - run: |
+          docker build --target jq -t ghcr.io/${{ github.repository_owner }}/linter-jq:latest linters/
           docker push ghcr.io/${{ github.repository_owner }}/linter-jq:latest
 
   build-markdownlint:
@@ -72,9 +68,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push markdownlint image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/linter-markdownlint:latest linters/markdownlint/
+      - run: |
+          docker build --target markdownlint -t ghcr.io/${{ github.repository_owner }}/linter-markdownlint:latest linters/
           docker push ghcr.io/${{ github.repository_owner }}/linter-markdownlint:latest
 
   build-gitleaks:
@@ -86,9 +81,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push gitleaks image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/linter-gitleaks:latest linters/gitleaks/
+      - run: |
+          docker build --target gitleaks -t ghcr.io/${{ github.repository_owner }}/linter-gitleaks:latest linters/
           docker push ghcr.io/${{ github.repository_owner }}/linter-gitleaks:latest
 
   build-dotenv:
@@ -100,7 +94,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push dotenv image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/linter-dotenv:latest linters/dotenv/
+      - run: |
+          docker build --target dotenv -t ghcr.io/${{ github.repository_owner }}/linter-dotenv:latest linters/
           docker push ghcr.io/${{ github.repository_owner }}/linter-dotenv:latest

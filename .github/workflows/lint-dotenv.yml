@@ -1,0 +1,19 @@
+name: Lint - dotenv
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: yamnish/platform-ci
+          ref: main
+          sparse-checkout: Taskfile.yml
+          sparse-checkout-cone-mode: false
+          path: .ci
+      - run: task -t .ci/Taskfile.yml lint-dotenv
+        shell: bash
