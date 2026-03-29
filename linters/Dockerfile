@@ -33,7 +33,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 # ── gitleaks ──────────────────────────────────────────────────────────────────
 FROM alpine:3.19 AS gitleaks
-RUN apk add --no-cache wget && \
+RUN apk add --no-cache git wget && \
     wget -qO /tmp/gitleaks.tar.gz \
       https://github.com/gitleaks/gitleaks/releases/download/v8.18.2/gitleaks_8.18.2_linux_x64.tar.gz && \
     tar -xzf /tmp/gitleaks.tar.gz -C /usr/local/bin gitleaks && \
